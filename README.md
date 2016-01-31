@@ -54,7 +54,7 @@ That's it. It'll work, but let's assume you would like to display the full name 
 
 ```ruby
 class UserTabulatrData < Tabulatr::Data
-  column :full_name, table_column_options: {header: 'The full name'} do |user|
+  column :full_name, header: 'The full name' do |user|
     link_to "#{user.first_name} #{user.last_name}", user
   end
 end
@@ -79,7 +79,7 @@ this particular column. If instead you want to disable sorting and filtering at 
 
 ```ruby
 class UserTabulatrData < Tabulatr::Data
-  column :full_name, table_column_options: {sortable: false, filter: false}
+  column :full_name, sortable: false, filter: false
 end
 ```
 
@@ -88,7 +88,7 @@ filter instead of a `LIKE` filter:
 
 ```ruby
 class UserTabulatrData < Tabulatr::Data
-  column :first_name, table_column_options: {filter: :exact}
+  column :first_name, filter: :exact
 end
 ```
 
@@ -122,7 +122,7 @@ class UserTabulatrData < Tabulatr::Data
     record.citizenship.name.upcase
   end
 
-  association :posts, :text, table_column_options: {filter: false, sortable: false} do |user|
+  association :posts, :text, filter: false, sortable: false do |user|
     user.posts.count
   end
 end
@@ -405,7 +405,7 @@ the columns in the block of `table_for`.
 
 # or in TabulatrData
 class UserTabulatrData < Tabulatr::Data
-  column(:first_name, table_column_options: {header_style: {color: 'red'}})
+  column(:first_name, header_style: {color: 'red'})
 end
 ```
 
